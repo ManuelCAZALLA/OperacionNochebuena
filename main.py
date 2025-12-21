@@ -1,18 +1,14 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import random
 import os
 import shutil
 from datetime import datetime, time
-from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="Operación Nochebuena Simple")
-
-# Endpoint raíz para evitar error 404
-@app.get("/")
-def root():
-    return {"mensaje": "🎄 Operación Nochebuena activa"}
 
 # Permitir llamadas desde frontend local (ajusta si haces deploy)
 app.add_middleware(
@@ -74,9 +70,10 @@ async def subir_capsula(
 @app.get("/capsula")
 def ver_capsula():
     now = datetime.now()
-    if now.time() < time(0, 0):  # Antes de medianoche (00:00)
-        raise HTTPException(status_code=403, detail="La cápsula estará disponible después de medianoche.")
-    # Devolver lista con URLs y textos
+    # Cambia aquí la hora si quieres que se desbloquee después de la llegada de Papá Noel, ejemplo 23:59
+    unlock_time = time(23, 59)
+    if now.time() < unlock_time:
+        raise HTTPException(status_code=403, detail="La cápsula estará disponible después de la llegada de Papá Noel.")
     fotos_info = [
         {
             "url": f"/fotos/{e['filename']}",
@@ -89,3 +86,11 @@ def ver_capsula():
 
 # Servir fotos estáticas
 app.mount("/fotos", StaticFiles(directory=FOTOS_DIR), name="fotos")
+
+# Servir frontend estático (index.html, css, js, etc)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Ruta raíz que sirve el index.html
+@app.get("/")
+def root():
+    return FileResponse("static/index.html")

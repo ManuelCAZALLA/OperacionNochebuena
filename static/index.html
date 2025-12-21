@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Operación Nochebuena</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Operación Nochebuena</h1>
+
+    <div class="card">
+      <h2>Misión secreta</h2>
+      <p id="mision">Cargando misión...</p>
+      <button id="nuevaMision">Nueva misión</button>
+    </div>
+
+    <div class="card">
+      <h2>Sube tu foto y predicción</h2>
+      <form id="formCapsula">
+        <input type="file" id="file" name="file" accept="image/*" required />
+        <input type="text" id="texto" name="texto" placeholder="Escribe una predicción o recuerdo" required />
+        <button type="submit">Enviar a la cápsula</button>
+      </form>
+      <p id="mensaje"></p>
+    </div>
+
+    <div class="card">
+      <h2>Galería cápsula del tiempo</h2>
+      <div id="galeria">Cargando...</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
