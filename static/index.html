@@ -4,16 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Operación Nochebuena</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <div class="app">
     <h1>Operación Nochebuena</h1>
 
     <div class="card">
+      <h2>Tu identidad festiva</h2>
+      <p id="alias">Generando apodo...</p>
+      <button id="nuevoAlias">Cambiar apodo</button>
+    </div>
+
+    <div class="card">
+      <h2>Modo anfitrión (ver antes de medianoche)</h2>
+      <input type="text" id="codigoAnfitrion" placeholder="Código anfitrión" />
+      <button id="activarAnfitrion">Activar modo anfitrión</button>
+      <button id="desactivarAnfitrion" class="secundario">Salir de modo anfitrión</button>
+      <p id="estadoAnfitrion" class="nota">Modo jugador activo.</p>
+    </div>
+
+    <div class="card">
+      <h2>Servidor backend</h2>
+      <p class="nota">Pon la URL donde corre FastAPI (ej: https://tuapp.onrender.com). Se guarda en este navegador.</p>
+      <input type="text" id="backendUrl" placeholder="https://..." />
+      <button id="guardarBackend">Guardar backend</button>
+      <p id="estadoBackend" class="nota"></p>
+    </div>
+
+    <div class="card">
       <h2>Misión secreta</h2>
       <p id="mision">Cargando misión...</p>
-      <button id="nuevaMision">Nueva misión</button>
+      <div class="acciones">
+        <button id="nuevaMision">Nueva misión</button>
+      </div>
+      <div class="acciones">
+        <button id="retoSorpresaBtn" class="secundario">Reto sorpresa</button>
+      </div>
+      <p id="retoSorpresa" class="nota"></p>
     </div>
 
     <div class="card">
@@ -32,6 +60,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>

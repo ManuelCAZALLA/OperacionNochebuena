@@ -74,6 +74,17 @@ button:hover {
   box-shadow: 0 8px 25px rgba(101, 73, 255, 0.7);
 }
 
+button.secundario {
+  background: #ecf0f1;
+  color: #34495e;
+  box-shadow: none;
+}
+
+button.secundario:hover {
+  background: #dfe6e9;
+  box-shadow: none;
+}
+
 input[type="text"], input[type="file"] {
   width: 100%;
   padding: 14px;
@@ -100,4 +111,16 @@ input[type="text"]:focus, input[type="file"]:focus {
 #galeria img:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.acciones {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nota {
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 10px;
 }
